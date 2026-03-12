@@ -1,6 +1,6 @@
 # Exercice Coding Accelerator
  
-# Afficher l'alaphabet en lettre en minuscule suivir d'un retour à la ligne
+# Afficher l'alaphabet en lettre en minuscule suivie d'un retour à la ligne
 
 # Set up des variables
 result = []
