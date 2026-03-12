@@ -1,6 +1,6 @@
 # Exercice Coding Accelerator
  
-# Inverser une chaine de caractère sans reversz
+# Inverser une chaine de caractère sans reverse
 
 # Importation des modules
 import sys
