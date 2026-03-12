@@ -2,9 +2,16 @@
  
 # Afficher l'alaphabet en lettre en minuscule suivir d'un retour à la ligne
 
+# Set up des variables
+result = []
 
+# Set up des constantes
 a = ord("a")
-b = a + 25
-alphabet = ascii[a:b]
+b = a + 26
 
-print(alphabet)
+# Fonctionnement du programme
+for x in range(a,b) :
+    result.append(chr(x))
+
+# Affichage du résultat
+print(''.join(result))
