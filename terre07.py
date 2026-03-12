@@ -19,4 +19,5 @@ def nombre_de_caracteres_d_une_chaine_de_caractere():
     else :
         print('erreur.')
         
+# Appeler le résultat
 nombre_de_caracteres_d_une_chaine_de_caractere()
