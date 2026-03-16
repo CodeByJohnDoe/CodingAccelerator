@@ -16,7 +16,6 @@ def middle_3():
     if argv_count != 3:
         print(error)
         return
-
     input_1, input_2, input_3 = sys.argv[1], sys.argv[2], sys.argv[3]
 
     # Vérification de l'acquision de nombre différents
