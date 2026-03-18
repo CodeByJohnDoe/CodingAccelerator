@@ -27,6 +27,5 @@ def combinaissons_de3chiffres() :
 
         print(', '.join(result))                 
 
-
 # Resultat
 combinaissons_de3chiffres()
