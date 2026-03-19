@@ -21,7 +21,7 @@ def premier() :
         if argv_1 == 0 or argv_1 == 1 or argv_1 == 2:
             print(oui)
 
-        # Racine de 3 ou plus
+        # Nombre premier de 3 ou plus
         else:
             for i in range(2, argv_1 - 1):
                 if modulo(argv_1, i )[1] == 0:
