@@ -5,8 +5,6 @@
 # Importation des modules
 import sys
 
-
-
 # Fonctionnement principal du programme
 def adapthour():
     error = "erreur, veuillez entrer une heure avec le format HH:MM."

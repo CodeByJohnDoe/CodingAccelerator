@@ -7,7 +7,7 @@ import sys
 
 # Fonctionnement principal du programme
 def show_fibonacci() :
-    error = "erreur, merci de d'entrer un seul nombre >= 0 :)"
+    error = "-1"
     if len(sys.argv) != 2 :
         print(error)
     
