@@ -9,7 +9,7 @@ import sys
 def first_up() :
     error = "error"
     if len(sys.argv) != 2 :
-        return sys.exit()
+        return error , sys.exit()
     argv = sys.argv[1].split()
     result = []
     delta_majascii = ord("a") - ord("A")

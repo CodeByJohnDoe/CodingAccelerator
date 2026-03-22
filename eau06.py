@@ -9,7 +9,7 @@ import sys
 def upper_1of2() :
     error = "error"
     if len(sys.argv) != 2 :
-        return sys.exit() 
+        return error , sys.exit() 
 
     # Vérifcation qu'on a au moins une lettre
     test = list(sys.argv[1])

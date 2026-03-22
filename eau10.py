@@ -9,7 +9,7 @@ import sys
 def arg_search() :
     error = "-1"
     if len(sys.argv) < 3 :
-        sys.exit()
+        return error , sys.exit()
     list = sys.argv[1:-1]
     target = sys.argv[-1]
     if target in list :

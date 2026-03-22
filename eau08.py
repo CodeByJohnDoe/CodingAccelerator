@@ -9,7 +9,7 @@ import sys
 def all_num() :
     error = "false"
     if len(sys.argv) != 2 :
-        return sys.exit()
+        return error , sys.exit()
     argv = sys.argv[1]
 
     # Scrutation pour avoir uniquement des chiffres
