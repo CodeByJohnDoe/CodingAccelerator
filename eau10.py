@@ -1,15 +1,15 @@
 # Exercice Coding Accelerator
  
-# Afficher des valeurs comprises entre deux nombres min inclus et max exclus
+# Recherhce le dernier argment dans un tableau
 
 # Importation des modules
 import sys
 
 # Fonctionnement principal du programme
-def min_max() :
-    error = "error"
-    if len(sys.argv) != 3 :
-        return sys.exit() 
+def arg_search() :
+    error = "-1"
+    if len(sys.argv) < 3 :
+        sys.exit()
     argv1 = str(sys.argv[1])
     argv2 = sys.argv[2]
     
@@ -36,4 +36,4 @@ def min_max() :
     return (" ".join(map(str , result))) # Découverte de la fonction Map très interessant pour éviter les patés de boucle
 
 # Resultat
-print(min_max())
+print(arg_search())

@@ -9,7 +9,7 @@ import sys
 def charinchar() :
     error = "error"
     if len(sys.argv) != 3 :
-        return error 
+        return sys.exit() 
 
     if len(sys.argv[1]) < len(sys.argv[2]) :
         return error 
