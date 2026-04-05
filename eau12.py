@@ -16,6 +16,7 @@ def triabulle(array) :
     for i in range (list_len) :
         if not (ord(list_array[i]) >= 48 and ord(list_array[i]) <= 57)  :
             return error, sys.exit()
+        
     # Vérification d'acquisition de nombre
     for x in range (len(array)) :
         if int(array[x]) :
@@ -28,7 +29,7 @@ def triabulle(array) :
             if int( list_array[j]) > int(list_array[j + 1]) :
                 list_array[j], list_array[j + 1]  = list_array[j + 1], list_array[j]
 
-    return list_array
+    return ' '.join(list_array)
                 
 # Resultat
 print(triabulle(sys.argv[1:]))
