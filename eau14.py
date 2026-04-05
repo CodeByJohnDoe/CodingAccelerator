@@ -1,12 +1,11 @@
-# Boite à outils
+# Exercice Coding Accelerator
+ 
+# Tri à par selection croissant 
 
-"""MODULO"""
-def modulo(a:int, b:int):
-    return a // b, a % b # Retourne le quotient et le reste de la division euclidienne de a par b
+# Importation des modules
+import sys
 
-
-"""TRI A SELECTION"""
-
+# Fonctionnement principal du programme
 def triaselction(array) :
     error = "error"
     if len(array) < 2 :
@@ -36,3 +35,6 @@ def triaselction(array) :
         list_array[i], list_array[idx] = str(current_min) ,list_array[i]
 
     return ' '.join(list_array)
+                
+# Resultat
+print(triaselction(sys.argv[1:]))
