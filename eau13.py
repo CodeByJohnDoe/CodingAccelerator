@@ -6,7 +6,7 @@
 import sys
 
 # Fonctionnement principal du programme
-def triabulle(array) :
+def triaselction(array) :
     error = "error"
     if len(array) < 2 :
         return error , sys.exit() 
@@ -37,4 +37,4 @@ def triabulle(array) :
     return ' '.join(list_array)
                 
 # Resultat
-print(triabulle(sys.argv[1:]))
+print(triaselction(sys.argv[1:]))
