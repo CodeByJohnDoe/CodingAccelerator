@@ -3,7 +3,7 @@
 
 import sys
 
-def ma_fonction(string_to_cut, string_separator):
+def string_cut(string_to_cut, string_separator):
     # Vérification des entrées
     if not string_to_cut or not string_separator:
         return "error"
@@ -37,7 +37,7 @@ if __name__ == "__main__":
         print("error")
         sys.exit()
 
-    reponse = ma_fonction(sys.argv[1], sys.argv[2])
+    reponse = string_cut(sys.argv[1], sys.argv[2])
     if reponse == "error":
         sys.exit()
     else:

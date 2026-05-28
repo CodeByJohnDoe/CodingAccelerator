@@ -3,33 +3,28 @@
 
 import sys
 
-def remove_adjacent_duplicates(input_string):
-    if not input_string:
+def join_strings_with_separator(strings_list, separator):
+    if not strings_list or len(strings_list) < 2: # Sécurité pour la fonction join nécessitant 2 arguments pour fonctionner
         return "error"
 
-    if len(input_string) == 1:
-        return input_string
+    return separator.join(strings_list) # La fonction join concat d'un coup la list
 
-    result = []
-    prev_char = input_string[0]
-    result.append(prev_char)
-
-    for current_char in input_string[1:]:
-        if current_char != prev_char:
-            result.append(current_char)
-            prev_char = current_char
-
-    return ''.join(result)
-
-# --- Test ---
+# -- Test --
 if __name__ == "__main__":
     # Vérification des arguments
-    if len(sys.argv) != 2:
+    if len(sys.argv) < 3:
         print("error")
         sys.exit()
 
-    output = remove_adjacent_duplicates(sys.argv[1])
+    # Le dernier argument est le séparateur
+    separator = sys.argv[-1]
+    # Tous les arguments sauf le dernier sont les chaînes à joindre
+    strings_to_join = sys.argv[1:-1]
+
+    output = join_strings_with_separator(strings_to_join, separator)
     if output == "error":
+        print("error")
         sys.exit()
     else:
         print(output)
+    print(output)

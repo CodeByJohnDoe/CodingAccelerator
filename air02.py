@@ -3,7 +3,7 @@
 
 import sys
 
-def find_odd_one_out(lst):
+def l_intrus(lst):
     # Vérification de la liste
     if not lst:
         return "error"
@@ -16,6 +16,7 @@ def find_odd_one_out(lst):
             count_dict[item] += 1
         else:
             count_dict[item] = 1
+
 
     # Trouver l'élément avec un nombre impair d'occurrences
     for item, count in count_dict.items():
@@ -34,7 +35,7 @@ if __name__ == "__main__":
     # Récupération des arguments (tous sauf le nom du script)
     args = sys.argv[1:]
 
-    result = find_odd_one_out(args)
+    result = l_intrus(args)
     if result == "error":
         sys.exit()
     else:

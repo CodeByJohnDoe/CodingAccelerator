@@ -11,13 +11,16 @@ def apply_operation(numbers, operation):
     # Vérification que l'opération commence par + ou -
     if not (operation.startswith('+') or operation.startswith('-')):
         return "error"
-
+    
+    # Convertit la partie numérique de l'opération en entier
     try:
         op_value = int(operation[1:])
     except ValueError:
         return "error"
 
     result = []
+    
+    # Vérification 
     for num in numbers:
         try:
             n = int(num)
