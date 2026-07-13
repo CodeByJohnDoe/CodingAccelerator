@@ -13,7 +13,7 @@ def apply_operation(numbers, operation):
         return "error"
     
     # Convertit la partie numérique de l'opération en entier
-    try:
+    try:                                                           # test d'utiliser try pour gerer les erreurs inattendues mais plus lents que if
         op_value = int(operation[1:])
     except ValueError:
         return "error"
