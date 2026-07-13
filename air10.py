@@ -1,6 +1,6 @@
 import sys
 
-def afficher_escalier(char, etages):
+def afficher_pyramide(char, etages):
     try:
         etages = int(etages)
         if etages <= 0:
@@ -8,13 +8,13 @@ def afficher_escalier(char, etages):
     except ValueError:
         return "error"
 
-    escalier = []
+    pyramide = []
     for i in range(1, etages + 1):
         espaces = " " * (etages - i)
         caracteres = char * (2 * i - 1)
-        escalier.append(espaces + caracteres)
+        pyramide.append(espaces + caracteres)
 
-    return "\n".join(escalier)
+    return "\n".join(pyramide)
 
 if __name__ == "__main__":
     if len(sys.argv) != 3:
@@ -28,7 +28,7 @@ if __name__ == "__main__":
         print("error")
         sys.exit()
 
-    resultat = afficher_escalier(char, etages)
+    resultat = afficher_pyramide(char, etages)
     if resultat == "error":
         print("error")
         sys.exit()
