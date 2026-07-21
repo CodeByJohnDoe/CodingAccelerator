@@ -1,5 +1,5 @@
 # Exercice Coding Accelerator
-# Affichage du contenu d'un fichier (version corrigée)
+# Affichage du contenu d'un fichier 
 
 import sys
 import os
