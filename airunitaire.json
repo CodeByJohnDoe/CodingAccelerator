@@ -1,0 +1,22 @@
+[
+    {
+        "name": "air00",
+        "tests": [
+            {
+                "input": "Bonjour les gars",
+                "separator": " ",
+                "expected": ["Bonjour", "les", "gars"]
+            },
+            {
+                "input": "Bonjour,les,gars",
+                "separator": ",",
+                "expected": ["Bonjour", "les", "gars"]
+            },
+            {
+                "input": "Bonjour-les-gars",
+                "separator": "-",
+                "expected": ["Bonjour", "les", "gars"]
+            }
+        ]
+    }
+]
