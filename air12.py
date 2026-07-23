@@ -1,74 +1,47 @@
-# Exercice Coding Accelerator
-# Test unitaire pour les exercices
-
-import sys
-import os
+import subprocess
 import json
-import subprocess # terninal interne
+import sys
 
-def test_unitaire():
-    """Exécute les tests unitaires pour chaque exercice."""
-    # Vérification que le fichier de test existe
-    nom_fichier = "airunitaire.json"
+def run_tests():
+    """
+    Exécute les tests unitaires définis dans le fichier JSON.
+    Compare les résultats obtenus avec les résultats attendus.
+    """
     try:
-        with open(nom_fichier, 'r', encoding="utf-8") as fichier:
-            list_unitaire = json.load(fichier)
-    except PermissionError:
-        print("error: permission refusée")
-        sys.exit(1)
+        # Chargement du fichier de tests
+        with open('airunitaire.json', 'r') as f:
+            tests = json.load(f)
     except FileNotFoundError:
-        print("error: fichier introuvable")
+        print("Erreur : fichier airunitaire.json introuvable", file=sys.stderr)
         sys.exit(1)
     except json.JSONDecodeError:
-        print("error: fichier JSON invalide")
+        print("Erreur : fichier JSON invalide", file=sys.stderr)
         sys.exit(1)
 
-    # Exécuter les tests pour chaque groupe d'exercices
-    for test_group in list_unitaire:
+    # Parcours de chaque groupe de tests
+    for test_group in tests:
+        print(f"\nExercice : {test_group['name']}")
+
+        # Exécution de chaque test individuel
         for i, test in enumerate(test_group['tests'], 1):
-            exercise_name   = test_group['name']
-            input_args      = test      ['input'].split()  # Convertit la chaîne en arguments
-            print(input_args)
-            expected_output = test      ['expected']
-            print(expected_output)
+            # Construction de la commande à exécuter
+            cmd = ["python", f"{test_group['name']}.py", test['input']]
+            if 'separator' in test:
+                cmd.append(test['separator'])
 
-            try:
-                # Exécuter l'exercice Python correspondant
-                result = subprocess.run(
-                    ["python", f"{exercise_name}.py"] + input_args,
-                    capture_output=True,
-                    text=True,
-                    check=True
-                )
+            # Exécution de la commande et capture de la sortie
+            result = subprocess.run(cmd, capture_output=True, text=True)
 
-                # Comparer la sortie réelle avec la sortie attendue
-                actual_output = result.stdout.strip()
+            # Traitement de la sortie (séparation par lignes et suppression des espaces vides)
+            actual = [line.strip() for line in result.stdout.strip().split('\n') if line.strip()]
 
-                # Gestion du cas où l'exercice retourne une liste
-                if actual_output.startswith('[') and actual_output.endswith(']'):
-                    actual_output = eval(actual_output)  # Convertit la chaîne de liste en liste Python
+            # Comparaison avec le résultat attendu
+            if actual == test['expected']:
+                print(f"Test {i}/{len(test_group['tests'])} : success")
+            else:
+                print(f"Test {i}/{len(test_group['tests'])} : failure")
+                print(f"  Attendu : {test['expected']}")
+                print(f"  Reçu : {actual}")
 
-                # Si c'est une liste, on la convertit en chaîne pour comparaison
-                if isinstance(actual_output, list):
-                    actual_output = '\n'.join(actual_output)
-                if isinstance(expected_output, list):
-                    expected_output = '\n'.join(expected_output)
-
-                if actual_output == expected_output.strip():
-                    print(f"{exercise_name} ({i}/{len(test_group['tests'])}): success")
-                else:
-                    print(f"{exercise_name} ({i}/{len(test_group['tests'])}): failure")
-
-            except subprocess.CalledProcessError as e:
-                print(f"{exercise_name} ({i}/{len(test_group['tests'])}): failure")
-            except FileNotFoundError:
-                print(f"{exercise_name} ({i}/{len(test_group['tests'])}): failure")
-
-# --- Test ---
 if __name__ == "__main__":
-    # Vérification des arguments
-    if len(sys.argv) != 1:
-        print("error: trop d'arguments")
-        sys.exit(1)
-
-    test_unitaire()
+    run_tests()
