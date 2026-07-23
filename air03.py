@@ -1,30 +1,42 @@
 # Exercice Coding Accelerator
-# Supprimer les caractères identiques adjacents
+# Trouver l'élément sans paire dans une liste
 
 import sys
 
-def join_strings_with_separator(strings_list, separator):
-    if not strings_list or len(strings_list) < 2: # Sécurité pour la fonction join nécessitant 2 arguments pour fonctionner
+def l_intrus(lst):
+    # Vérification de la liste
+    if not lst:
         return "error"
 
-    return separator.join(strings_list) # La fonction join concat d'un coup la list
+    count_dict = {}
 
-# -- Test --
+    # Compter les occurrences de chaque élément
+    for item in lst:
+        if item in count_dict:
+            count_dict[item] += 1
+        else:
+            count_dict[item] = 1
+
+
+    # Trouver l'élément avec un nombre impair d'occurrences
+    for item, count in count_dict.items():
+        if count % 2 != 0:
+            return item
+
+    return "error"  # Si tous les éléments ont une paire
+
+# --- Test ---
 if __name__ == "__main__":
     # Vérification des arguments
-    if len(sys.argv) < 3:
+    if len(sys.argv) < 2:
         print("error")
         sys.exit()
 
-    # Le dernier argument est le séparateur
-    separator = sys.argv[-1]
-    # Tous les arguments sauf le dernier sont les chaînes à joindre
-    strings_to_join = sys.argv[1:-1]
+    # Récupération des arguments (tous sauf le nom du script)
+    args = sys.argv[1:]
 
-    output = join_strings_with_separator(strings_to_join, separator)
-    if output == "error":
-        print("error")
+    result = l_intrus(args)
+    if result == "error":
         sys.exit()
     else:
-        print(output)
-    print(output)
+        print(result)

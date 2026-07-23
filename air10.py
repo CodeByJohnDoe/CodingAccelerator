@@ -1,46 +1,37 @@
 # Exercice Coding Accelerator
-# Cortex
+# Affichage du contenu d'un fichier 
 
 import sys
+import os
 
-def afficher_pyramide(char, etages):
-    # Vérification que le nombre d'étages est un entier positif
+def afficher_fichier(nom_fichier):
+    # Vérification que le fichier existe et est accessible
+    if not os.path.isfile(nom_fichier):
+        return "error: fichier introuvable"
+
+    # Vérification des permissions
+    if not os.access(nom_fichier, os.R_OK):
+        return "error: permission refusée"
+
     try:
-        etages = int(etages)
-        if etages <= 0:
-            return "error"
-    except ValueError:
-        return "error"
-
-    # Construction de la pyramide
-    pyramide = []
-    for i in range(1, etages + 1):
-        # Calcul des espaces avant les caractères
-        espaces = " " * (etages - i)
-        # Calcul des caractères pour chaque ligne (1, 3, 5, ... caractères)
-        caracteres = char * (2 * i - 1)
-        pyramide.append(espaces + caracteres)
-
-    return "\n".join(pyramide)
+        with open(nom_fichier, 'r', encoding='utf-8') as fichier:
+            contenu = fichier.read()
+            return contenu if contenu else ""  # Retourne "" si le fichier est vide
+    except Exception as e:
+        return f"error: {str(e)}"
 
 # --- Test ---
 if __name__ == "__main__":
-    # Vérification des arguments d'entrée
-    if len(sys.argv) != 3:
-        print("error")
-        sys.exit()
+    # Vérification des arguments
+    if len(sys.argv) != 2:
+        print("error: utilisation attendue: python air09.py <nom_fichier>")
+        sys.exit(1)
 
-    char = sys.argv[1]
-    etages = sys.argv[2]
+    nom_fichier = sys.argv[1]
+    contenu = afficher_fichier(nom_fichier)
 
-    # Vérification que le caractère est bien un seul caractère
-    if len(char) != 1:
-        print("error")
-        sys.exit()
-
-    resultat = afficher_pyramide(char, etages)
-    if resultat == "error":
-        print("error")
-        sys.exit()
+    if contenu.startswith("error"):
+        print(contenu)
+        sys.exit(1)
     else:
-        print(resultat)
+        print(contenu, end='')

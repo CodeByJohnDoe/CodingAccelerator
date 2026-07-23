@@ -1,20 +1,38 @@
 # Exercice Coding Accelerator
-# Filtrer un tableau : garder les éléments qui NE contiennent PAS la sous-chaîne (insensible à la casse)
+# Opérations sur une liste d'entiers
 
 import sys
 
-def filter_strings_by_substring(strings, substring):
+def apply_operation(numbers, operation):
     # Vérification des entrées
-    if not strings or not substring:
+    if not numbers or not operation:
+        return "error"
+
+    # Vérification que l'opération commence par + ou -
+    if not (operation.startswith('+') or operation.startswith('-')):
+        return "error"
+    
+    # Convertit la partie numérique de l'opération en entier
+    try:                                                           # test d'utiliser try pour gerer les erreurs inattendues mais plus lents que if
+        op_value = int(operation[1:])
+    except ValueError:
         return "error"
 
     result = []
-    for s in strings:
-        # Recherche insensible à la majuscule (On aurait pu aussi utiliser une conversion et comparaison via le systeme ascii)
-        if substring.lower() not in s.lower():
-            result.append(s)
+    
+    # Vérification 
+    for num in numbers:
+        try:
+            n = int(num)
+        except ValueError:
+            return "error"
 
-    return result if result else "error"
+        if operation.startswith('+'):
+            result.append(str(n + op_value))
+        else:
+            result.append(str(n - op_value))
+
+    return ' '.join(result)
 
 # --- Test ---
 if __name__ == "__main__":
@@ -23,13 +41,13 @@ if __name__ == "__main__":
         print("error")
         sys.exit()
 
-    # Séparation des chaînes et de la sous-chaîne
-    strings = sys.argv[1:-1]
-    substring = sys.argv[-1]
+    # Séparation des nombres et de l'opération
+    numbers = sys.argv[1:-1]
+    operation = sys.argv[-1]
 
-    output = filter_strings_by_substring(strings, substring)
+    output = apply_operation(numbers, operation)
     if output == "error":
         print("error")
         sys.exit()
     else:
-        print(", ".join(output))
+        print(output)

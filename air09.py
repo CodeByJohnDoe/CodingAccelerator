@@ -1,37 +1,29 @@
 # Exercice Coding Accelerator
-# Affichage du contenu d'un fichier 
+# Rotation gauche d'un tableau
 
 import sys
-import os
 
-def afficher_fichier(nom_fichier):
-    # Vérification que le fichier existe et est accessible
-    if not os.path.isfile(nom_fichier):
-        return "error: fichier introuvable"
+def ma_rotation(array):
+    # Vérification des entrées
+    if not array or len(array) < 2:
+        return array if array else "error"
 
-    # Vérification des permissions
-    if not os.access(nom_fichier, os.R_OK):
-        return "error: permission refusée"
-
-    try:
-        with open(nom_fichier, 'r', encoding='utf-8') as fichier:
-            contenu = fichier.read()
-            return contenu if contenu else ""  # Retourne "" si le fichier est vide
-    except Exception as e:
-        return f"error: {str(e)}"
+    # Rotation vers la gauche
+    return array[1:] + array[:1]
 
 # --- Test ---
 if __name__ == "__main__":
     # Vérification des arguments
-    if len(sys.argv) != 2:
-        print("error: utilisation attendue: python air09.py <nom_fichier>")
-        sys.exit(1)
+    if len(sys.argv) < 2:
+        print("error")
+        sys.exit()
 
-    nom_fichier = sys.argv[1]
-    contenu = afficher_fichier(nom_fichier)
+    # Récupération du tableau (tous les arguments sauf le nom du script)
+    array = sys.argv[1:]
 
-    if contenu.startswith("error"):
-        print(contenu)
-        sys.exit(1)
+    output = ma_rotation(array)
+    if output == "error":
+        print("error")
+        sys.exit()
     else:
-        print(contenu, end='')
+        print(", ".join(output))

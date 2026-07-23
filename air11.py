@@ -1,48 +1,46 @@
 # Exercice Coding Accelerator
-# Quick Sort
+# Cortex
 
 import sys
 
-def my_quick_sort(array):
-    # Cas de base : si le tableau a 0 ou 1 élément, il est déjà trié
-    if len(array) <= 1:
-        return array
-
-    # Conversion des éléments en entiers (pour gérer les erreurs)
+def afficher_pyramide(char, etages):
+    # Vérification que le nombre d'étages est un entier positif
     try:
-        array = [int(x) for x in array]
+        etages = int(etages)
+        if etages <= 0:
+            return "error"
     except ValueError:
-        return "error"  # Si un élément n'est pas un nombre
+        return "error"
 
-    # Choix du pivot (milieu du tableau)
-    pivot = array[len(array) // 2]
+    # Construction de la pyramide
+    pyramide = []
+    for i in range(1, etages + 1):
+        # Calcul des espaces avant les caractères
+        espaces = " " * (etages - i)
+        # Calcul des caractères pour chaque ligne (1, 3, 5, ... caractères)
+        caracteres = char * (2 * i - 1)
+        pyramide.append(espaces + caracteres)
 
-    # Partitionnement :
-    # - left : éléments < pivot
-    left = [x for x in array if x < pivot]
-    # - middle : éléments == pivot
-    middle = [x for x in array if x == pivot]
-    # - right : éléments > pivot
-    right = [x for x in array if x > pivot]
-
-    # Appel récursif sur left et right, puis concaténation
-    return my_quick_sort(left) + middle + my_quick_sort(right)
+    return "\n".join(pyramide)
 
 # --- Test ---
 if __name__ == "__main__":
-    # Vérification des arguments
-    if len(sys.argv) < 2:
+    # Vérification des arguments d'entrée
+    if len(sys.argv) != 3:
         print("error")
         sys.exit()
 
-    # Récupération des arguments
-    array = sys.argv[1:]
+    char = sys.argv[1]
+    etages = sys.argv[2]
 
-    # Tri du tableau
-    sorted_array = my_quick_sort(array)
+    # Vérification que le caractère est bien un seul caractère
+    if len(char) != 1:
+        print("error")
+        sys.exit()
 
-    if sorted_array == "error":
+    resultat = afficher_pyramide(char, etages)
+    if resultat == "error":
         print("error")
         sys.exit()
     else:
-        print(" ".join(map(str, sorted_array)))
+        print(resultat)

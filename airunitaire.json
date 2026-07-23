@@ -3,19 +3,50 @@
         "name": "air00",
         "tests": [
             {
-                "input": "Bonjour les gars",
-                "separator": " ",
+                "input": ["Bonjour les gars"," "],
                 "expected": ["Bonjour", "les", "gars"]
             },
             {
-                "input": "Bonjour,les,gars",
-                "separator": ",",
+                "input": ["Bonjour,les,gars", ","],
                 "expected": ["Bonjour", "les", "gars"]
             },
             {
-                "input": "Bonjour-les-gars",
-                "separator": "-",
+                "input": ["Bonjour-les-gars", "-"],
                 "expected": ["Bonjour", "les", "gars"]
+            }
+        ]
+    },
+        {
+        "name": "air01",
+        "tests": [
+            {
+                "input":["Crevette magique dans la mer des étoiles","la"],
+                "expected": ["Crevette magique dans","mer des étoiles"]
+            },
+            {
+                "input":["Crevette magique dans la mer des étoiles","kapoué"],
+                "expected": ["Crevette magique dans la mer des étoiles"]
+            },
+            {
+                "input": ["Crevette magique dans la mer des étoiles"," "],
+                "expected": ["Crevette","magique","dans", "la", "mer", "des", "étoiles"]
+            }
+        ]
+    },
+        {
+        "name": "air02",
+        "tests": [
+            {
+                "input":["je", "test", "des", "trucs", " "],
+                "expected": ["je test des trucs"]
+            },
+            {
+                "input":["je", "test", "des", "trucs", "\n"],
+                "expected": ["je", "test", "des", "trucs"]
+            },
+            {
+                "input":["je", "test", "des", "trucs", " "],
+                "expected": ["je-test-des-trucs"]
             }
         ]
     }

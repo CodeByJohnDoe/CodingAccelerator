@@ -1,11 +1,10 @@
-# Exercice Coding Accelerator
-# Découper une chaîne avec un séparateur personnalisé
-
 import sys
 
 def string_cut(string_to_cut, string_separator):
     # Vérification des entrées
-    if not string_to_cut or not string_separator:
+    if not isinstance(string_to_cut, str) or not isinstance(string_separator, str):
+        return "error"
+    if not string_separator:  # Si séparateur est vide
         return "error"
 
     splited = []
@@ -14,10 +13,8 @@ def string_cut(string_to_cut, string_separator):
     i = 0
 
     while i <= len(string_to_cut) - separator_len:
-        # Vérifie si on trouve le séparateur à la position i
         if string_to_cut[i:i+separator_len] == string_separator:
-            # Ajoute le segment avant le séparateur
-            if i > marker:
+            if i > marker:  # Ajoute seulement s'il y a du contenu
                 splited.append(string_to_cut[marker:i])
             marker = i + separator_len
             i += separator_len  # Saute le séparateur
@@ -37,9 +34,9 @@ if __name__ == "__main__":
         print("error")
         sys.exit()
 
-    reponse = string_cut(sys.argv[1], sys.argv[2])
-    if reponse == "error":
+    response = string_cut(sys.argv[1], sys.argv[2])
+    if response == "error":
         sys.exit()
     else:
-        for mot in reponse:
+        for mot in response:
             print(mot)

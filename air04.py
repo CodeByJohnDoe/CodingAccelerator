@@ -1,53 +1,30 @@
 # Exercice Coding Accelerator
-# Opérations sur une liste d'entiers
+# Supprimer les caractères identiques adjacents
 
 import sys
 
-def apply_operation(numbers, operation):
-    # Vérification des entrées
-    if not numbers or not operation:
+def join_strings_with_separator(strings_list, separator):
+    if not strings_list or len(strings_list) < 2: # Sécurité pour la fonction join nécessitant 2 arguments pour fonctionner
         return "error"
 
-    # Vérification que l'opération commence par + ou -
-    if not (operation.startswith('+') or operation.startswith('-')):
-        return "error"
-    
-    # Convertit la partie numérique de l'opération en entier
-    try:                                                           # test d'utiliser try pour gerer les erreurs inattendues mais plus lents que if
-        op_value = int(operation[1:])
-    except ValueError:
-        return "error"
+    return separator.join(strings_list) # La fonction join concat d'un coup la list
 
-    result = []
-    
-    # Vérification 
-    for num in numbers:
-        try:
-            n = int(num)
-        except ValueError:
-            return "error"
-
-        if operation.startswith('+'):
-            result.append(str(n + op_value))
-        else:
-            result.append(str(n - op_value))
-
-    return ' '.join(result)
-
-# --- Test ---
+# -- Test --
 if __name__ == "__main__":
     # Vérification des arguments
     if len(sys.argv) < 3:
         print("error")
         sys.exit()
 
-    # Séparation des nombres et de l'opération
-    numbers = sys.argv[1:-1]
-    operation = sys.argv[-1]
+    # Le dernier argument est le séparateur
+    separator = sys.argv[-1]
+    # Tous les arguments sauf le dernier sont les chaînes à joindre
+    strings_to_join = sys.argv[1:-1]
 
-    output = apply_operation(numbers, operation)
+    output = join_strings_with_separator(strings_to_join, separator)
     if output == "error":
         print("error")
         sys.exit()
     else:
         print(output)
+    print(output)

@@ -1,0 +1,64 @@
+# test_unitaire.py
+import subprocess
+import json
+import sys
+
+def run_tests():
+    """
+    Exécute les tests unitaires définis dans le fichier JSON.
+    Gère plusieurs exercices (air00, air01, etc.) avec leurs tests respectifs.
+    """
+    try:
+        # Chargement du fichier de tests
+        with open('airunitaire.json', 'r', encoding='utf-8') as f:
+            tests = json.load(f)
+    except FileNotFoundError:
+        print("Erreur : fichier airunitaire.json introuvable", file=sys.stderr)
+        sys.exit(1)
+    except json.JSONDecodeError:
+        print("Erreur : fichier JSON invalide", file=sys.stderr)
+        sys.exit(1)
+
+    # Initialisation des compteurs
+    total_tests = 0
+    total_success = 0
+
+    # Parcours de chaque groupe de tests (air00, air01, etc.)
+    for test_group in tests:
+        # Surlignement jaune pour le nom de l'exercice
+        print(f"\n📝 \033[93mExercice : {test_group['name']}\033[0m")
+
+        # Exécution de chaque test individuel
+        for i, test in enumerate(test_group['tests'], 1):
+            # Construction de la commande à exécuter
+            # Format input: ["chaîne à traiter", "séparateur"]
+            cmd = ["python", f"{test_group['name']}.py", test['input'][0]]
+
+            # Ajout du séparateur seulement s'il est présent dans l'input
+            if len(test['input']) > 1 and test['input'][1]:
+                cmd.append(test['input'][1])
+
+            # Exécution de la commande et capture de la sortie
+            result = subprocess.run(cmd, capture_output=True, text=True)
+
+            # Traitement de la sortie (séparation par lignes et suppression des espaces vides)
+            actual = [line.strip() for line in result.stdout.strip().split('\n') if line.strip()]
+
+            # Incrémentation du compteur total de tests
+            total_tests += 1
+
+            # Comparaison avec le résultat attendu
+            if actual == test['expected']:
+                print(f"   - Test {i}/{len(test_group['tests'])} : ✅ \033[92mSucess\033[0m")
+                total_success += 1
+            else:
+                print(f"  Test {i}/{len(test_group['tests'])} : ❌ \033[91mFailure\033[0m")
+                print(f"    Entrée    : {test['input'][0]} (séparateur: {test['input'][1] if len(test['input']) > 1 else 'par défaut'})")
+                print(f"    Attendu   : {test['expected']}")
+                print(f"    Reçu      : {actual}")
+
+    # Affichage du cumul final en rouge
+    print(f"\n🎯 \033[94mTotal succès : {total_success}/{total_tests}\033[0m")
+
+if __name__ == "__main__":
+    run_tests()
