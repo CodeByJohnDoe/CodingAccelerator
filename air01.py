@@ -1,3 +1,5 @@
+# Exercice Coding Accelerator
+# Découper une chaîne avec un séparateur personnalisé
 import sys
 
 def string_cut(string_to_cut, string_separator):
