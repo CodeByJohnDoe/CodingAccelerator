@@ -1,4 +1,5 @@
-# test_unitaire.py
+# Exercice Coding Accelerator
+# Test_unitaire
 import subprocess
 import json
 import sys
@@ -35,7 +36,7 @@ def run_tests():
             # Gestion spécifique selon l'exercice
             if test_group['name'] in ['air00', 'air01','air04']:
                 cmd.extend(test['input'][:2])  # Ajouter avec les 2 premiers éléments (ou moins)
-            elif test_group['name'] in ['air02', 'air03','air05']:
+            elif test_group['name'] in ['air02', 'air03','air05','air06']:
                 # Le dernier élément est le séparateur
                 cmd.extend(test['input'][:-1])
                 if test['input'][-1]:  # Si séparateur n'est pas vide

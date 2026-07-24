@@ -106,5 +106,23 @@
                 "expected": ["5 2 1 4 5"]
             }
         ]
+    },
+        {
+        "name": "air06",
+        "tilte": " Filtrer un tableau : garder les éléments qui NE contiennent PAS la sous-chaîne (insensible à la casse)",        
+        "tests": [
+            {
+                "input":["Michel", "Albert", "Thérèse", "Benoit", "t"],
+                "expected": ["Michel"]
+            },
+            {
+                "input":["Michel", "Albert", "Thérèse", "Benoit", "a"],
+                "expected": ["Michel, Thérèse, Benoit"]
+            },
+            {
+                "input":["5", "2", "1", "4", "5", "5"],
+                "expected": ["2, 1, 4"]
+            }
+        ]
     }
 ]
