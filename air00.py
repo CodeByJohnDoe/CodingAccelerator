@@ -1,4 +1,5 @@
-# air00.py
+# Exercice Coding Accelerator
+# Découper une chaîne de caractères
 import sys
 
 def tollbox_split(string_to_cut, separator=None):

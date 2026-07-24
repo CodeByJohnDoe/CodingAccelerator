@@ -3,28 +3,21 @@
 
 import sys
 
-def join_strings_with_separator(strings_list, separator):
-    if not strings_list or len(strings_list) < 2: # Sécurité pour la fonction join nécessitant 2 arguments pour fonctionner
-        return "error"
+import sys
 
-    return separator.join(strings_list) # La fonction join concat d'un coup la list
+def suppr_doublons_adjacents(chaine):
+    if not chaine:
+        return ""
+    resultat = [chaine[0]]
+    for char in chaine[1:]:
+        if char != resultat[-1]:
+            resultat.append(char)
+    return ''.join(resultat)
 
-# -- Test --
 if __name__ == "__main__":
-    # Vérification des arguments
-    if len(sys.argv) < 3:
+    if len(sys.argv) != 2:
         print("error")
         sys.exit()
 
-    # Le dernier argument est le séparateur
-    separator = sys.argv[-1]
-    # Tous les arguments sauf le dernier sont les chaînes à joindre
-    strings_to_join = sys.argv[1:-1]
-
-    output = join_strings_with_separator(strings_to_join, separator)
-    if output == "error":
-        print("error")
-        sys.exit()
-    else:
-        print(output)
-    print(output)
+    chaine = sys.argv[1]
+    print(suppr_doublons_adjacents(chaine))

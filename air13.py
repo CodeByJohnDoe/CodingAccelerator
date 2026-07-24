@@ -32,15 +32,10 @@ def run_tests():
         for i, test in enumerate(test_group['tests'], 1):
             # Construction de la commande à exécuter
             cmd = ["python", f"{test_group['name']}.py"]
-
             # Gestion spécifique selon l'exercice
-            if test_group['name'] in ['air00', 'air01']:
-                # Pour air00 et air01: input[0] = chaîne, input[1] = séparateur
-                cmd.append(test['input'][0])
-                if len(test['input']) > 1 and test['input'][1]:
-                    cmd.append(test['input'][1])
-            elif test_group['name'] == 'air02':
-                # Pour air02: tous les éléments de input sauf le dernier sont les mots à joindre
+            if test_group['name'] in ['air00', 'air01','air04']:
+                cmd.extend(test['input'][:2])  # Ajouter avec les 2 premiers éléments (ou moins)
+            elif test_group['name'] in ['air02', 'air03']:
                 # Le dernier élément est le séparateur
                 cmd.extend(test['input'][:-1])
                 if test['input'][-1]:  # Si séparateur n'est pas vide

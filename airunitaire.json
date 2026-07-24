@@ -1,6 +1,7 @@
 [
     {
         "name": "air00",
+        "tilte": "Découper une chaîne de caractères",
         "tests": [
             {
                 "input": ["Bonjour les gars"," "],
@@ -18,6 +19,7 @@
     },
         {
         "name": "air01",
+        "tilte": "Découper une chaîne avec un séparateur personnalisé",
         "tests": [
             {
                 "input":["Crevette magique dans la mer des étoiles","la"],
@@ -35,6 +37,7 @@
     },
         {
         "name": "air02",
+        "tilte": "Concaténer une liste de chaînes avec un séparateur",        
         "tests": [
             {
                 "input":["je", "test", "des", "trucs", " "],
@@ -47,6 +50,42 @@
             {
                 "input":["je", "test", "des", "trucs", "-"],
                 "expected": ["je-test-des-trucs"]
+            }
+        ]
+    },
+        {
+        "name": "air03",
+        "tilte": "Trouver l'élément sans paire dans une liste",        
+        "tests": [
+            {
+                "input":["1","2", "3", "4", "5", "4", "3", "2", "1" ],
+                "expected": ["5"]
+            },
+            {
+                "input":["bonjour", "monsieur","bonjour"],
+                "expected": ["monsieur"]
+            },
+            {
+                "input":["-", "test", "des", "choses", "test", "-"],
+                "expected": ["des choses"]
+            }
+        ]
+    },
+        {
+        "name": "air04",
+        "tilte": "Supprimer les caractères identiques adjacents",        
+        "tests": [
+            {
+                "input":["Hello milady,   bien ou quoi ??"],
+                "expected": ["Helo milady, bien ou quoi ?"]
+            },
+            {
+                "input":["boonjjjourrrr"],
+                "expected": ["bonjour"]
+            },
+            {
+                "input":["------"],
+                "expected": ["-"]
             }
         ]
     }
