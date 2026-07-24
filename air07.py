@@ -1,5 +1,5 @@
 # Exercice Coding Accelerator
-# Insertion triée dans une liste d'entiers (version finale optimisée)
+# Insertion triée dans une liste d'entiers
 
 import sys
 
