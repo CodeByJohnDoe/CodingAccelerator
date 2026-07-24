@@ -32,6 +32,11 @@ def dessiner_rectangle(largeur: int, hauteur: int) :
         print("o" + "-" * (largeur - 1) + "o")
 
 def main():
+    # Vérification des arguments d'entrée
+    if len(sys.argv) != 3:
+        print("error")
+        sys.exit(1)
+
     # Récupération de la largeur et de la hauteur
     try:
         largeur = int(sys.argv[1])
@@ -50,9 +55,4 @@ def main():
 
 # --- Test ---
 if __name__ == "__main__":
-    # Vérification des arguments d'entrée
-    if len(sys.argv) != 3:
-        print("error")
-        sys.exit(1)
-
     main()
