@@ -37,7 +37,7 @@ if __name__ == "__main__":
 
     # Récupération des arguments
     array = sys.argv[1:]
-
+    
     # Tri du tableau
     sorted_array = my_quick_sort(array)
 
