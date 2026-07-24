@@ -88,5 +88,23 @@
                 "expected": ["-"]
             }
         ]
+    },
+        {
+        "name": "air05",
+        "tilte": "Opérations sur une liste d'entiers",        
+        "tests": [
+            {
+                "input":["1", "2", " 3", "4", "5", "+2"],
+                "expected": ["3 4 5 6 7"]
+            },
+            {
+                "input":["5", "2", "1", "4", "5", "-2"],
+                "expected": ["3 0 -1 2 3"]
+            },
+            {
+                "input":["5", "2", "1", "4", "5", "+0"],
+                "expected": ["5 2 1 4 5"]
+            }
+        ]
     }
 ]
