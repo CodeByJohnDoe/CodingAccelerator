@@ -1,7 +1,7 @@
 [
     {
         "name": "air00",
-        "tilte": "Découper une chaîne de caractères",
+        "title": "Découper une chaîne de caractères",
         "tests": [
             {
                 "input": ["Bonjour les gars"," "],
@@ -19,7 +19,7 @@
     },
         {
         "name": "air01",
-        "tilte": "Découper une chaîne avec un séparateur personnalisé",
+        "title": "Découper une chaîne avec un séparateur personnalisé",
         "tests": [
             {
                 "input":["Crevette magique dans la mer des étoiles","la"],
@@ -37,7 +37,7 @@
     },
         {
         "name": "air02",
-        "tilte": "Concaténer une liste de chaînes avec un séparateur",        
+        "title": "Concaténer une liste de chaînes avec un séparateur",        
         "tests": [
             {
                 "input":["je", "test", "des", "trucs", " "],
@@ -55,7 +55,7 @@
     },
         {
         "name": "air03",
-        "tilte": "Trouver l'élément sans paire dans une liste",        
+        "title": "Trouver l'élément sans paire dans une liste",        
         "tests": [
             {
                 "input":["1","2", "3", "4", "5", "4", "3", "2", "1" ],
@@ -73,7 +73,7 @@
     },
         {
         "name": "air04",
-        "tilte": "Supprimer les caractères identiques adjacents",        
+        "title": "Supprimer les caractères identiques adjacents",        
         "tests": [
             {
                 "input":["Hello milady,   bien ou quoi ??"],
@@ -91,7 +91,7 @@
     },
         {
         "name": "air05",
-        "tilte": "Opérations sur une liste d'entiers",        
+        "title": "Opérations sur une liste d'entiers",        
         "tests": [
             {
                 "input":["1", "2", " 3", "4", "5", "+2"],
@@ -109,7 +109,7 @@
     },
         {
         "name": "air06",
-        "tilte": " Filtrer un tableau : garder les éléments qui NE contiennent PAS la sous-chaîne (insensible à la casse)",        
+        "title": " Filtrer un tableau : garder les éléments qui NE contiennent PAS la sous-chaîne (insensible à la casse)",        
         "tests": [
             {
                 "input":["Michel", "Albert", "Thérèse", "Benoit", "t"],
@@ -127,7 +127,7 @@
     },
         {
         "name": "air07",
-        "tilte": "Insertion triée dans une liste d'entiers ",        
+        "title": "Insertion triée dans une liste d'entiers ",        
         "tests": [
             {
                 "input":["1","3","4","2"],
@@ -145,7 +145,7 @@
     },
         {
         "name": "air09",
-        "tilte": "Fusion de deux listes triées",        
+        "title": "Fusion de deux listes triées",        
         "tests": [
             {
                 "input":["Michel","Albert","Thérèse","Benoit"],
@@ -163,7 +163,7 @@
     },
         {
         "name": "air10",
-        "tilte": "Affichage du contenu d'un fichier",        
+        "title": "Affichage du contenu d'un fichier",        
         "tests": [
             {
                 "input":["a.txt"],
@@ -181,7 +181,7 @@
     },
         {
         "name": "air11",
-        "tilte": "Cortex",        
+        "title": "Cortex",        
         "tests": [
             {
                 "input":["0","5"],
@@ -199,7 +199,7 @@
     },
         {
         "name": "air12",
-        "tilte": "Quick Sort",        
+        "title": "Quick Sort",        
         "tests": [
             {
                 "input":[ "6", "5", " 4", "3", "2", "1"],
