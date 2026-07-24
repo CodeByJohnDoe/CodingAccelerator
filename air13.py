@@ -34,7 +34,7 @@ def run_tests():
             # Construction de la commande à exécuter
             cmd = ["python", f"{test_group['name']}.py"]
             # Gestion spécifique selon l'exercice
-            if test_group['name'] in ['air00', 'air01','air04']:
+            if test_group['name'] in ['air00', 'air01','air04','air10']:
                 cmd.extend(test['input'][:2])  # Ajouter avec les 2 premiers éléments (ou moins)
             elif test_group['name'] in ['air02', 'air03','air05','air06','air07', 'air08','air09']:
                 # Le dernier élément est le séparateur

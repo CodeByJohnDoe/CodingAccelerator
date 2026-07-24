@@ -160,5 +160,23 @@
                 "expected": ["y, aK, Ka"]
             }
         ]
+    },
+        {
+        "name": "air10",
+        "tilte": "Affichage du contenu d'un fichier",        
+        "tests": [
+            {
+                "input":["a.txt"],
+                "expected": ["Je danse le mia"]
+            },
+            {
+                "input":["a1.txt"],
+                "expected": ["Je danse","le mia"]
+            },
+            {
+                "input":["a2.txt"],
+                "expected": []
+            }
+        ]
     }
 ]
