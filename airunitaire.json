@@ -144,20 +144,20 @@
         ]
     },
         {
-        "name": "air08",
+        "name": "air09",
         "tilte": "Fusion de deux listes triées",        
         "tests": [
             {
-                "input":["10", "20", "30", "fusion", "15", "25", "35"],
-                "expected": ["10 15 20 25 30 35"]
+                "input":["Michel","Albert","Thérèse","Benoit"],
+                "expected": ["Albert, Thérèse, Benoit, Michel"]
             },
             {
-                "input":["10", "20", "30", "fusion", "5", "25", "35"],
-                "expected": ["5 10 20 25 30 35"]
+                "input":["Gauche","Centre","Droite"],
+                "expected": ["Centre, Droite, Gauche"]
             },
             {
-                "input":["100", "200", "300", "fusion", "15", "25", "35"],
-                "expected": ["15 25 35 100 200 300"]
+                "input":["Ka", "y", "aK"],
+                "expected": ["y, aK, Ka"]
             }
         ]
     }
