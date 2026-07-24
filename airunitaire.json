@@ -45,7 +45,7 @@
                 "expected": ["je", "test", "des", "trucs"]
             },
             {
-                "input":["je", "test", "des", "trucs", " "],
+                "input":["je", "test", "des", "trucs", "-"],
                 "expected": ["je-test-des-trucs"]
             }
         ]

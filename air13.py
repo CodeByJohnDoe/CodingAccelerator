@@ -31,12 +31,20 @@ def run_tests():
         # Exécution de chaque test individuel
         for i, test in enumerate(test_group['tests'], 1):
             # Construction de la commande à exécuter
-            # Format input: ["chaîne à traiter", "séparateur"]
-            cmd = ["python", f"{test_group['name']}.py", test['input'][0]]
+            cmd = ["python", f"{test_group['name']}.py"]
 
-            # Ajout du séparateur seulement s'il est présent dans l'input
-            if len(test['input']) > 1 and test['input'][1]:
-                cmd.append(test['input'][1])
+            # Gestion spécifique selon l'exercice
+            if test_group['name'] in ['air00', 'air01']:
+                # Pour air00 et air01: input[0] = chaîne, input[1] = séparateur
+                cmd.append(test['input'][0])
+                if len(test['input']) > 1 and test['input'][1]:
+                    cmd.append(test['input'][1])
+            elif test_group['name'] == 'air02':
+                # Pour air02: tous les éléments de input sauf le dernier sont les mots à joindre
+                # Le dernier élément est le séparateur
+                cmd.extend(test['input'][:-1])
+                if test['input'][-1]:  # Si séparateur n'est pas vide
+                    cmd.append(test['input'][-1])
 
             # Exécution de la commande et capture de la sortie
             result = subprocess.run(cmd, capture_output=True, text=True)
@@ -53,7 +61,7 @@ def run_tests():
                 total_success += 1
             else:
                 print(f"  Test {i}/{len(test_group['tests'])} : ❌ \033[91mFailure\033[0m")
-                print(f"    Entrée    : {test['input'][0]} (séparateur: {test['input'][1] if len(test['input']) > 1 else 'par défaut'})")
+                print(f"    Entrée    : {test['input']}")
                 print(f"    Attendu   : {test['expected']}")
                 print(f"    Reçu      : {actual}")
 
