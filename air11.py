@@ -16,7 +16,7 @@ def afficher_pyramide(char, etages):
     pyramide = []
     for i in range(1, etages + 1):
         # Calcul des espaces avant les caractères
-        espaces = " " * (etages - i)
+        espaces = "." + " " * (etages - i)   # Ajout du point afin de faciliter le test unitaire
         # Calcul des caractères pour chaque ligne (1, 3, 5, ... caractères)
         caracteres = char * (2 * i - 1)
         pyramide.append(espaces + caracteres)
